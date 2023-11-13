@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey"
+    tools:context=".ui.ReserveActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_horizontal">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reservar clase"
+            android:textSize="23sp"
+            android:gravity="center_horizontal"
+            android:fontFamily="@font/monofonto_rg"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="25dp"
+
+            />
+
+        <androidx.cardview.widget.CardView
+
+android:visibility="visible"
+
+            android:id="@+id/cv_siguiente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            android:elevation="8dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="25dp"
+            app:contentPadding="12dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Formato para aula de medios"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Docente"
+                    android:layout_marginTop="12dp" />
+                <EditText
+                    android:id="@+id/et_docente"
+                    android:hint="nombre del docente"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Asignatrura"
+                    android:layout_marginTop="12dp" />
+                <Spinner
+                    android:id="@+id/spinner_asignatura"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Trimestre" />
+                <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rg_trimestre"
+                    android:orientation="horizontal">
+                    <RadioButton android:id="@+id/radio_tri_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"/>
+                    <RadioButton android:id="@+id/radio_tri_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2" />
+                    <RadioButton android:id="@+id/radio_tri_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3"/>
+                </RadioGroup>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Fecha para la clase"/>
+                <EditText
+                    android:id="@+id/et_fecha"
+                    android:onClick="onClickScheduledDate"
+                    android:inputType="date"
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:maxLines="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:backgroundTint="@color/btn_color"
+
+                    android:layout_marginBottom="-20dp"
+                    android:text="volver"
+                    android:drawableLeft="@drawable/back"
+                    android:id="@+id/btn_volver1"
+                    style="@style/NextButtom"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:backgroundTint="@color/btn_color"
+                    android:text="Siguiente"
+                    android:drawableRight="@drawable/next"
+                    android:id="@+id/btn_siguiente"
+                    style="@style/NextButtom"/>
+
+            </LinearLayout>
+            
+
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+
+
+            android:visibility="gone"
+
+
+            android:id="@+id/cv_confirmar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            android:elevation="8dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="25dp"
+            app:contentPadding="12dp">
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Hora clase"
+                        android:layout_marginTop="12dp"/>
+                    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="match_parent"
+                        android:id="@+id/rg_hora"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <RadioButton android:id="@+id/radio_hora_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1ª"/>
+                        <RadioButton android:id="@+id/radio_hora_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2ª" />
+
+                        <RadioButton android:id="@+id/radio_hora_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="3ª"/>
+                        <RadioButton android:id="@+id/radio_hora_4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="4ª"/>
+                        <RadioButton android:id="@+id/radio_hora_5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="5ª" />
+                        <RadioButton android:id="@+id/radio_hora_6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="6ª" />
+                        <RadioButton android:id="@+id/radio_hora_7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="7ª"/>
+                    </RadioGroup>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Grado"
+                        android:layout_marginTop="12dp"/>
+                    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/rg_grado"
+                        android:orientation="horizontal">
+                        <RadioButton android:id="@+id/radio_grado_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1°"/>
+                        <RadioButton android:id="@+id/radio_grado_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2°" />
+                        <RadioButton android:id="@+id/radio_grado3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="3°"/>
+                    </RadioGroup>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Seccion"
+                        android:layout_marginTop="12dp"/>
+                    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/rg_seccion"
+                        android:orientation="horizontal">
+                        <RadioButton android:id="@+id/radio_secc_a"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="A"/>
+                        <RadioButton android:id="@+id/radio_secc_b"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="B" />
+                        <RadioButton android:id="@+id/radio_secc_c"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="C"/>
+                        <RadioButton android:id="@+id/radio_secc_d"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="D"/>
+                        <RadioButton android:id="@+id/radio_secc_e"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="E" />
+                        <RadioButton android:id="@+id/radio_secc_f"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="F"/>
+                    </RadioGroup>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="Aprendizaje esperado"/>
+                    <EditText
+                        android:id="@+id/et_aprendizaje"
+                        android:hint="(prioritario)"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="Consideraciones"/>
+                    <EditText
+                        android:id="@+id/et_consideraciones"
+                        android:hint="...."
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="¿Se articula con otra materia?"
+                        android:layout_marginTop="12dp"/>
+                    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="match_parent"
+                        android:id="@+id/rg_articula"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <RadioButton android:id="@+id/radio_art_si"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Si"/>
+                        <RadioButton android:id="@+id/radio_art_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="No" />
+                    </RadioGroup>
+                    <Button
+                        android:layout_width="match_parent"
+                        android:backgroundTint="@color/btn_color"
+                        android:layout_marginBottom="-20dp"
+                        android:text="volver"
+                        android:drawableLeft="@drawable/back"
+                        android:id="@+id/btn_volver2"
+                        style="@style/NextButtom"/>
+                    <Button
+                        android:layout_width="match_parent"
+                        android:backgroundTint="@color/btn_color"
+                        android:text="Siguiente"
+                        android:drawableRight="@drawable/next"
+                        android:id="@+id/btn_suiguiente2"
+                        style="@style/NextButtom"/>
+
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+
+
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+
+
+            android:visibility="gone"
+
+
+            android:id="@+id/cv_resumen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            android:elevation="8dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="25dp"
+            app:contentPadding="20dp">
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Datos de la reserva"
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="12dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Docente: "
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/tv_resumen_docente"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Pruebaaaaaa"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Asignatura: "
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/tv_resumen_asignatura"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Pruebaaaaaa"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Dia: "
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/tv_resumen_dia"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Pruebaaaaaa"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Hora: "
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/tv_resumen_hora"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Pruebaaaaaa"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Grado: "
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/tv_resumen_grado"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Pruebaaaaaa"/>
+                    </LinearLayout>
+                    <Button
+                        android:layout_width="match_parent"
+                        android:backgroundTint="@color/btn_color"
+                        android:layout_marginBottom="-20dp"
+                        android:text="volver"
+                        android:drawableLeft="@drawable/back"
+                        android:id="@+id/btn_volver3"
+                        style="@style/NextButtom"/>
+                    <Button
+                        android:layout_width="match_parent"
+                        android:backgroundTint="@color/btn_color"
+                        android:text="Reservar Clase"
+                        android:drawableRight="@drawable/baseline_assignment_24"
+                        android:id="@+id/btn_confirmar"
+                        style="@style/NextButtom"/>
+
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

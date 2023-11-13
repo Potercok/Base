@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="btn_color">#19B8DF</color>
+    <color name="blueis">#7FE6FF</color>
+    <color name="bluestrong">#005E75</color>
+    <color name="bluee">#3E00FF</color>
+    <color name="red">#FC0000</color>
+    <color name="cian">#00FFE0</color>
+    <color name="grey">#B7D8D4</color>
+
+
+</resources>
