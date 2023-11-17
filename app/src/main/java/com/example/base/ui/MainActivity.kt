@@ -14,6 +14,7 @@ import android.widget.EditText
 import android.widget.Toast
 import com.example.base.io.response.model.LoginResponse
 import com.example.base.io.response.RetrofitClientInstance
+import com.example.base.io.response.authHelpers.TokenController
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,13 +23,10 @@ import com.example.base.util.PreferenceHelper.set
 
 class MainActivity : AppCompatActivity() {
 
-    val retrofit = RetrofitClientInstance.retrofitClientInstance
+    val retrofit = RetrofitClientInstance.getRetrofitInstance(this)
     val apiService = retrofit.create(ApiService::class.java)
-
-    private fun createSessionPreference(jwt:String){
-        val preferences=PreferenceHelper.defaultPrefs(this)
-        preferences["jwt"] = jwt
-    }
+    //Tkn
+    val tknControl = TokenController()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,36 +57,32 @@ class MainActivity : AppCompatActivity() {
         startActivity(i)
         finish()
     }
-    private fun performLogin(){
-        val etEmail=findViewById<EditText>(R.id.et_Email).text.toString()
-        val etPassword=findViewById<EditText>(R.id.et_Password).text.toString()
+    private fun performLogin() {
+        val etEmail = findViewById<EditText>(R.id.et_Email).text.toString()
+        val etPassword = findViewById<EditText>(R.id.et_Password).text.toString()
 
-        val call = apiService.postLogin(etEmail,etPassword)
-        call.enqueue(object:Callback<LoginResponse>{
+        val call = apiService.postLogin(etEmail, etPassword)
+        call.enqueue(object : Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                val loginResponse = response.body()
 
-                if (response.isSuccessful){
-                    val loginResponse=response.body()
-                    if (loginResponse==null){
-                        Toast.makeText(applicationContext, "Se produjo un error en el servidor", Toast.LENGTH_SHORT).show()
-                        return
-                    }
-                    if (loginResponse.success){
-                        createSessionPreference(loginResponse.jwt)
-                        goTousuario()
-                    }else{
-                        Toast.makeText(applicationContext, "Las credenciales son incorrectas", Toast.LENGTH_SHORT).show()
-                    }
-                }else{
+                // Primero, verifica si la respuesta es nula
+                if (loginResponse == null) {
                     Toast.makeText(applicationContext, "Se produjo un error en el servidor", Toast.LENGTH_SHORT).show()
+                    return
                 }
 
+                if (response.isSuccessful) {
+                    loginResponse.data?.let { data ->
+                        tknControl.storeToke(applicationContext, data.jwt)
+                        goTousuario()
+                    } ?: Toast.makeText(applicationContext, "JWT no encontrado", Toast.LENGTH_SHORT).show()
+                }
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                TODO("Not yet implemented")
+                Toast.makeText(applicationContext, "No se pudo procesar la solicitud: ${t.message}", Toast.LENGTH_SHORT).show()
             }
-
         })
     }
 }
