@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.base.R
 import com.example.base.model.Appointment
 
-class AppointmentAdapter (private val appointments:ArrayList<Appointment>)
+class AppointmentAdapter (private val appointments:List<Appointment>)
     : RecyclerView.Adapter<AppointmentAdapter.ViewHolder>(){
     class ViewHolder(itemView:View) : RecyclerView.ViewHolder(itemView){
         val tvAppointmentId = itemView.findViewById<TextView>(R.id.tv_id)
@@ -28,8 +28,8 @@ class AppointmentAdapter (private val appointments:ArrayList<Appointment>)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val appointment = appointments[position]
         holder.tvAppointmentId.text = "Reserva #${appointment.id}"
-        holder.tvDoctorName.text = appointment.doctorname
-        holder.tvScheduledDate.text = "Reservado el dia: ${appointment.scheduledDate}"
-        holder.tvScheduledTime.text = "hora de la reserva: ${appointment.scheduledTime}"
+        holder.tvDoctorName.text = appointment.nombre
+        holder.tvScheduledDate.text = "Reservado el dia: ${appointment.fecha}"
+        holder.tvScheduledTime.text = "hora de la reserva: ${appointment.hora_inicio}"
     }
 }
