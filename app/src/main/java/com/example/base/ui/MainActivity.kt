@@ -12,7 +12,8 @@ import com.example.base.util.PreferenceHelper.get
 
 import android.widget.EditText
 import android.widget.Toast
-import com.example.base.io.response.LoginResponse
+import com.example.base.io.response.model.LoginResponse
+import com.example.base.io.response.RetrofitClientInstance
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -20,9 +21,10 @@ import com.example.base.util.PreferenceHelper.set
 
 
 class MainActivity : AppCompatActivity() {
-    private val apiService:ApiService by lazy {
-        ApiService.create()
-    }
+
+    val retrofit = RetrofitClientInstance.retrofitClientInstance
+    val apiService = retrofit.create(ApiService::class.java)
+
     private fun createSessionPreference(jwt:String){
         val preferences=PreferenceHelper.defaultPrefs(this)
         preferences["jwt"] = jwt
@@ -64,6 +66,7 @@ class MainActivity : AppCompatActivity() {
         val call = apiService.postLogin(etEmail,etPassword)
         call.enqueue(object:Callback<LoginResponse>{
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+
                 if (response.isSuccessful){
                     val loginResponse=response.body()
                     if (loginResponse==null){
