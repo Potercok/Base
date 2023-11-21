@@ -29,7 +29,7 @@ class AppointmentAdapter (private val appointments:List<Appointment>)
         val appointment = appointments[position]
         holder.tvAppointmentId.text = "Reserva #${appointment.id}"
         holder.tvDoctorName.text = appointment.nombre
-        holder.tvScheduledDate.text = "Reservado el dia: ${appointment.fecha}"
-        holder.tvScheduledTime.text = "hora de la reserva: ${appointment.hora_inicio}"
+        holder.tvScheduledDate.text = "Reservado el dia: ${appointment.dia}"
+        holder.tvScheduledTime.text = "hora de la reserva: ${appointment.hora}"
     }
 }
