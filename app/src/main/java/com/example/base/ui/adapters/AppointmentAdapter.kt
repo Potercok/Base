@@ -1,4 +1,4 @@
-package com.example.base.ui
+package com.example.base.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.base.R
-import com.example.base.model.Appointment
+import com.example.base.io.response.model.Appointment
 
 class AppointmentAdapter (private val appointments:List<Appointment>)
     : RecyclerView.Adapter<AppointmentAdapter.ViewHolder>(){

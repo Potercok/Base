@@ -10,7 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.base.R
 import com.example.base.io.response.ApiService
 import com.example.base.io.response.RetrofitClientInstance
-import com.example.base.model.Appointment
+import com.example.base.io.response.model.Appointment
+import com.example.base.ui.adapters.AppointmentAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

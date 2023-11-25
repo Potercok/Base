@@ -1,4 +1,4 @@
-package com.example.base.model
+package com.example.base.io.response.model
 
 import java.util.Date
 import java.util.concurrent.RunnableScheduledFuture

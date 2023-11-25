@@ -4,7 +4,7 @@ import retrofit2.Call
 import retrofit2.http.POST
 import retrofit2.http.Query
 import com.example.base.io.response.model.LoginResponse
-import com.example.base.model.Appointment
+import com.example.base.io.response.model.Appointment
 import retrofit2.http.GET
 
 
