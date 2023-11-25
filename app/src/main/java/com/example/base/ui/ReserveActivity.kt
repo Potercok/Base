@@ -268,8 +268,8 @@ class ReserveActivity : AppCompatActivity() {
 
             //TODO: Implentar API
 
-            //Toast.makeText(applicationContext, "Clase agendada exitosamente", Toast.LENGTH_SHORT.show()
-            //goTousuario()
+            Toast.makeText(applicationContext, "Clase agendada exitosamente", Toast.LENGTH_SHORT).show()
+            goTousuario()
 
 
         }
