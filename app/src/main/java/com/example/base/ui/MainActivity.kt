@@ -18,7 +18,6 @@ import com.example.base.io.response.authHelpers.TokenController
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import com.example.base.util.PreferenceHelper.set
 
 
 class MainActivity : AppCompatActivity() {
@@ -53,7 +52,7 @@ class MainActivity : AppCompatActivity() {
     }
     //de main a ususario
     private fun goTousuario(){
-        val i = Intent(this, usuario::class.java)
+        val i = Intent(this, UsuarioActivity::class.java)
         startActivity(i)
         finish()
     }

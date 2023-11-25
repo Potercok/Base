@@ -29,7 +29,7 @@
             android:name=".ui.NoAccess"
             android:exported="false" />
         <activity
-            android:name=".ui.usuario"
+            android:name=".ui.UsuarioActivity"
             android:exported="false"
             android:launchMode="singleInstance" />
         <activity

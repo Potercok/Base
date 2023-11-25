@@ -84,15 +84,18 @@ android:visibility="visible"
                     <RadioButton android:id="@+id/radio_tri_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1"/>
+                        android:text="1"
+                        android:tag="1"/>
                     <RadioButton android:id="@+id/radio_tri_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2" />
+                        android:text="2"
+                        android:tag="2"/>
                     <RadioButton android:id="@+id/radio_tri_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="3"/>
+                        android:text="3"
+                        android:tag="3"/>
                 </RadioGroup>
                 <TextView
                     android:layout_width="match_parent"
@@ -164,32 +167,39 @@ android:visibility="visible"
                         <RadioButton android:id="@+id/radio_hora_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="1ª"/>
+                            android:text="1ª"
+                            android:tag="7:00:00"/>
                         <RadioButton android:id="@+id/radio_hora_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="2ª" />
+                            android:text="2ª"
+                            android:tag="8:00:00"/>
 
                         <RadioButton android:id="@+id/radio_hora_3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="3ª"/>
+                            android:text="3ª"
+                            android:tag="9:00:00"/>
                         <RadioButton android:id="@+id/radio_hora_4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="4ª"/>
+                            android:text="4ª"
+                            android:tag="10:00:00"/>
                         <RadioButton android:id="@+id/radio_hora_5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="5ª" />
+                            android:text="5ª"
+                            android:tag="11:00:00"/>
                         <RadioButton android:id="@+id/radio_hora_6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="6ª" />
+                            android:text="6ª"
+                            android:tag="12:00:00"/>
                         <RadioButton android:id="@+id/radio_hora_7"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="7ª"/>
+                            android:text="7ª"
+                            android:tag="13:00:00"/>
                     </RadioGroup>
                     <TextView
                         android:layout_width="match_parent"
@@ -204,15 +214,18 @@ android:visibility="visible"
                         <RadioButton android:id="@+id/radio_grado_1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="1°"/>
+                            android:text="1°"
+                            android:tag="1"/>
                         <RadioButton android:id="@+id/radio_grado_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="2°" />
+                            android:text="2°"
+                            android:tag="2"/>
                         <RadioButton android:id="@+id/radio_grado3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="3°"/>
+                            android:text="3°"
+                            android:tag="3"/>
                     </RadioGroup>
                     <TextView
                         android:layout_width="match_parent"
@@ -227,27 +240,33 @@ android:visibility="visible"
                         <RadioButton android:id="@+id/radio_secc_a"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="A"/>
+                            android:text="A"
+                            android:tag="A"/>
                         <RadioButton android:id="@+id/radio_secc_b"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="B" />
+                            android:text="B"
+                            android:tag="B"/>
                         <RadioButton android:id="@+id/radio_secc_c"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="C"/>
+                            android:text="C"
+                            android:tag="C"/>
                         <RadioButton android:id="@+id/radio_secc_d"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="D"/>
+                            android:text="D"
+                            android:tag="D"/>
                         <RadioButton android:id="@+id/radio_secc_e"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="E" />
+                            android:text="E"
+                            android:tag="E"/>
                         <RadioButton android:id="@+id/radio_secc_f"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="F"/>
+                            android:text="F"
+                            android:tag="F"/>
                     </RadioGroup>
                     <TextView
                         android:layout_width="match_parent"
@@ -288,6 +307,16 @@ android:visibility="visible"
                             android:layout_height="wrap_content"
                             android:text="No" />
                     </RadioGroup>
+
+                    <EditText
+                        android:id="@+id/et_articula"
+                        android:visibility="invisible"
+                        android:enabled="false"
+                        android:hint="Agrega tus comentarios"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Sin comentarios"/>
+
                     <Button
                         android:layout_width="match_parent"
                         android:backgroundTint="@color/btn_color"
