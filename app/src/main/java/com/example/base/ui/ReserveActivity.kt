@@ -16,15 +16,21 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import com.example.base.R
+import com.example.base.io.response.ApiService
+import com.example.base.io.response.RetrofitClientInstance
+import com.example.base.io.response.model.Appointment
 import com.example.base.io.response.model.AppointmentPost
+import com.example.base.ui.adapters.AppointmentAdapter
+import com.google.gson.Gson
+import retrofit2.Call
+import retrofit2.Response
 import java.util.Calendar
-import kotlin.math.log
+import javax.security.auth.callback.Callback
 
 class ReserveActivity : AppCompatActivity() {
 
     lateinit var appointment: AppointmentPost
     val selectedCalendar = Calendar.getInstance()
-
 
     //
     lateinit var btnNext2: Button
@@ -46,16 +52,49 @@ class ReserveActivity : AppCompatActivity() {
     lateinit var etAprendizaje : EditText
     lateinit var etConsideraciones : EditText
     lateinit var rgArticula : RadioGroup
+    lateinit var etArticula : EditText
+
+    val retrofit = RetrofitClientInstance.getRetrofitInstance(this)
+    val apiService = retrofit.create(ApiService::class.java)
 
 
-    fun FillData(){
+    fun getRadioGroupValue(radioGroup: RadioGroup): String?{
+        val selectedRadioButtonID = radioGroup.checkedRadioButtonId
+
+        if (selectedRadioButtonID!=-1){
+            val selectedRadioButton = radioGroup.findViewById<RadioButton>(selectedRadioButtonID)
+            return selectedRadioButton.tag as? String
+        }
+        return null
+    }
+
+    fun setPostData(){
         appointment.nombre = etDocente.text.toString()
         appointment.asignatura = spAsignatura.selectedItem.toString()
-        //TODO: Como leer el check con un valor
-        val selectedId = rgTrimestre.checkedRadioButtonId
-        val selected = findViewById<RadioButton>(selectedId)
-        appointment.trimestre = selected.text.toString().toIntOrNull()
+
+        //Leer valores del RADIO
+        appointment.trimestre = getRadioGroupValue(rgTrimestre)
+
         appointment.fecha = etFecha.text.toString()
+
+        //
+        appointment.hora = getRadioGroupValue(rgHora)
+
+        appointment.grado = getRadioGroupValue(rgGrado)
+        appointment.seccion = getRadioGroupValue(rgSeccion)
+
+        appointment.aprendizaje=etAprendizaje.text.toString()
+        appointment.consideraciones= etConsideraciones.text.toString()
+
+
+        //TODO: IMPLEMENTAR COMPONENTES
+        appointment.estrategias=""
+        appointment.observaciones=""
+        appointment.descripcion=""
+
+
+        appointment.articula=etArticula.text.toString()
+
     }
     fun validateInputs_FST(): Boolean {
 
@@ -106,7 +145,28 @@ class ReserveActivity : AppCompatActivity() {
         etAprendizaje = findViewById<EditText>(R.id.et_aprendizaje)
         etConsideraciones = findViewById<EditText>(R.id.et_consideraciones)
         rgArticula = findViewById<RadioGroup>(R.id.rg_articula)
+        etArticula = findViewById<EditText>(R.id.et_articula)
+        setRadioAction()
     }
+
+    fun setRadioAction(){
+        val radioButton1 = findViewById<RadioButton>(R.id.radio_art_si)
+        rgArticula.setOnCheckedChangeListener{
+            _, checkedId ->
+            if (checkedId == radioButton1.id)
+            {
+                etArticula.isEnabled = checkedId == radioButton1.id
+                etArticula.visibility = View.VISIBLE
+                etArticula.setText("")
+            }
+            else{
+                etArticula.isEnabled = false
+                etArticula.visibility = View.GONE
+                etArticula.setText("Sin comentarios")
+            }
+        }
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -122,7 +182,6 @@ class ReserveActivity : AppCompatActivity() {
 
             if (validateInputs_FST())
             {
-                FillData()
                 cvNext.visibility = View.GONE
                 cvConfirm.visibility = View.VISIBLE
             }
@@ -184,11 +243,33 @@ class ReserveActivity : AppCompatActivity() {
 
         btnConfirm.setOnClickListener {
 
+
+            setPostData()
+            val gson = Gson()
+            val json = gson.toJson(appointment)
+            val call = apiService.registrarReserva(json)
+
+            call.enqueue(object : retrofit2.Callback<String> {
+                override fun onResponse(call: Call<String>, response: Response<String>) {
+
+                    Toast.makeText(this@ReserveActivity, response.message(), Toast.LENGTH_SHORT)
+                        .show()
+                }
+
+                override fun onFailure(call: Call<String>, t: Throwable) {
+                    Toast.makeText(this@ReserveActivity, "Error", Toast.LENGTH_SHORT)
+                        .show()
+                }
+
+
+            })
+
+
+
             //TODO: Implentar API
 
-            Toast.makeText(applicationContext, "Clase agendada exitosamente", Toast.LENGTH_SHORT)
-                .show()
-            goTousuario()
+            //Toast.makeText(applicationContext, "Clase agendada exitosamente", Toast.LENGTH_SHORT.show()
+            //goTousuario()
 
 
         }

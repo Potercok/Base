@@ -60,7 +60,9 @@ class AppointmentsActivity : AppCompatActivity() {
                     adapter.notifyDataSetChanged()
                     rvAppointments.adapter = adapter
                 } else {
-                    Toast.makeText(applicationContext,  "Error al obtener datos", Toast.LENGTH_SHORT).show()
+
+                    //TODO: IMPLEMENTAR CIERRE DE SESION CUANDO HAYA ERROR
+                    Toast.makeText(applicationContext,   response.code().toString(), Toast.LENGTH_SHORT).show()
                 }
 
 
