@@ -7,7 +7,7 @@ import android.widget.Button
 import android.widget.TextView
 import com.example.base.R
 
-class usuario : AppCompatActivity() {
+class UsuarioActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_usuario)

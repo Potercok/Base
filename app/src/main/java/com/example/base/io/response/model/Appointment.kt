@@ -1,4 +1,4 @@
-package com.example.base.model
+package com.example.base.io.response.model
 
 import java.util.Date
 import java.util.concurrent.RunnableScheduledFuture
@@ -6,7 +6,6 @@ import java.util.concurrent.RunnableScheduledFuture
 data class Appointment(
     val id : Int,
     val nombre : String,
-    val fecha : Date,
-    val hora_inicio: String,
-    val hora_fin: String
+    val dia : Date,
+    val hora: String,
 )

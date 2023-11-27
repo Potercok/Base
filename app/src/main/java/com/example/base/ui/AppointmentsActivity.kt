@@ -10,7 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.base.R
 import com.example.base.io.response.ApiService
 import com.example.base.io.response.RetrofitClientInstance
-import com.example.base.model.Appointment
+import com.example.base.io.response.model.Appointment
+import com.example.base.ui.adapters.AppointmentAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -59,7 +60,9 @@ class AppointmentsActivity : AppCompatActivity() {
                     adapter.notifyDataSetChanged()
                     rvAppointments.adapter = adapter
                 } else {
-                    Toast.makeText(applicationContext,  "Error al obtener datos", Toast.LENGTH_SHORT).show()
+
+                    //TODO: IMPLEMENTAR CIERRE DE SESION CUANDO HAYA ERROR
+                    Toast.makeText(applicationContext,   response.code().toString(), Toast.LENGTH_SHORT).show()
                 }
 
 
