@@ -30,7 +30,7 @@
 
         <androidx.cardview.widget.CardView
 
-android:visibility="visible"
+            android:visibility="gone"
 
             android:id="@+id/cv_siguiente"
             android:layout_width="match_parent"
@@ -135,7 +135,7 @@ android:visibility="visible"
         <androidx.cardview.widget.CardView
 
 
-            android:visibility="gone"
+
 
 
             android:id="@+id/cv_confirmar"
@@ -148,7 +148,8 @@ android:visibility="visible"
             app:contentPadding="12dp">
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                tools:ignore="MissingClass">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -293,16 +294,21 @@ android:visibility="visible"
                         android:layout_height="wrap_content"
                         android:text="¿Se articula con otra materia?"
                         android:layout_marginTop="12dp"/>
-                    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-                        android:layout_width="match_parent"
+
+                    <RadioGroup
                         android:id="@+id/rg_articula"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
-                        <RadioButton android:id="@+id/radio_art_si"
+
+                        <RadioButton
+                            android:id="@+id/radio_art_si"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Si"/>
-                        <RadioButton android:id="@+id/radio_art_no"
+                            android:text="Si" />
+
+                        <RadioButton
+                            android:id="@+id/radio_art_no"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="No" />
@@ -316,6 +322,37 @@ android:visibility="visible"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Sin comentarios"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="Estrategias"/>
+                    <EditText
+                        android:id="@+id/et_estrategias"
+                        android:hint="...."
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="Observaciones"/>
+                    <EditText
+                        android:id="@+id/et_observaciones"
+                        android:hint="...."
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="Descripcion"/>
+                    <EditText
+                        android:id="@+id/et_descripcion"
+                        android:hint="...."
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
 
                     <Button
                         android:layout_width="match_parent"
