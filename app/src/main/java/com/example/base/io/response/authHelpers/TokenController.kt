@@ -16,4 +16,11 @@ class TokenController {
         editor.apply()
     }
 
+    fun deleteToken(context: Context){
+        val preferences = PreferenceHelper.defaultPrefs(context)
+        val editor = preferences.edit()
+        editor.remove("jwt")
+        editor.apply()
+    }
+
 }
