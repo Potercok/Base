@@ -53,6 +53,9 @@ class ReserveActivity : AppCompatActivity() {
     lateinit var etConsideraciones : EditText
     lateinit var rgArticula : RadioGroup
     lateinit var etArticula : EditText
+    lateinit var etEstrategias:EditText
+    lateinit var etObservaciones:EditText
+    lateinit var etDescripcion:EditText
 
     val retrofit = RetrofitClientInstance.getRetrofitInstance(this)
     val apiService = retrofit.create(ApiService::class.java)
@@ -88,9 +91,9 @@ class ReserveActivity : AppCompatActivity() {
 
 
         //TODO: IMPLEMENTAR COMPONENTES
-        appointment.estrategias=""
-        appointment.observaciones=""
-        appointment.descripcion=""
+        appointment.estrategias=etEstrategias.toString()
+        appointment.observaciones=etObservaciones.toString()
+        appointment.descripcion=etDescripcion.toString()
 
 
         appointment.articula=etArticula.text.toString()

@@ -23,11 +23,15 @@ class UsuarioActivity : AppCompatActivity() {
         tvGoactivity.setOnClickListener{
          goToActivity()
         }
-        val tvGoreserve= findViewById<Button>(R.id.tv_go_to_reserve)
-        tvGoreserve.setOnClickListener{
-            goToreserve()
+        val tvGocalendar = findViewById<Button>(R.id.tv_go_to_reserve)
+        tvGocalendar.setOnClickListener{
+            goToCalendar()
         }
 
+    }
+    private fun goToCalendar (){
+        val intent = Intent(this,Calendar::class.java)
+        startActivity(intent)
     }
     private  fun goToMyAppoinments (){
         val intent = Intent(this,AppointmentsActivity::class.java)
@@ -40,10 +44,5 @@ class UsuarioActivity : AppCompatActivity() {
         startActivity(i)
 
     }
-    private fun goToreserve(){
-        val i = Intent(this, ReserveActivity::class.java)
 
-        startActivity(i)
-        finish()
-    }
 }

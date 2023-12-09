@@ -30,7 +30,7 @@
             android:layout_marginLeft="25sp"
             android:fontFamily="@font/bebas_egular"
             android:layout_marginTop="5dp"
-            android:text="Bienvenido @"
+            android:text="Bienvenido"
             android:textSize="30sp"/>
 
 
