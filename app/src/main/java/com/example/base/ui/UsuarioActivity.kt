@@ -6,8 +6,10 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import com.example.base.R
+import com.example.base.io.response.authHelpers.TokenController
 
 class UsuarioActivity : AppCompatActivity() {
+    val tokenController = TokenController()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_usuario)
@@ -36,6 +38,8 @@ class UsuarioActivity : AppCompatActivity() {
         startActivity(intent)
     }
     private fun goToActivity(){
+        //Implementar cierre de sesion
+        tokenController.deleteToken(this)
         val i = Intent(this, MainActivity::class.java)
         startActivity(i)
 
